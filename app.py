@@ -1,4 +1,3 @@
-# project/app.py
 """
 UI (Streamlit) para análise de sentimentos em 4 emojis.
 Requisitos de UI/UX atendidos:
@@ -44,7 +43,7 @@ EXEMPLOS = [
 
 st.set_page_config(page_title="Análise de Sentimentos (🙂 😕 😡 😢)", page_icon="💬", layout="centered")
 
-# CSS para centralizar e estilizar cards
+
 st.markdown(
     """
     <style>
@@ -133,7 +132,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Foco automático no textarea ao carregar
+
 st.markdown(
     """
     <script>
@@ -162,7 +161,7 @@ with col_b2:
 
 if usar_exemplos:
     st.markdown("#### Exemplos rápidos")
-    # Mostra 6 exemplos como botões
+    
     ex_cols = st.columns(3)
     for i, frase in enumerate(EXEMPLOS):
         with ex_cols[i % 3]:
@@ -174,14 +173,14 @@ if analisar:
     if not texto.strip():
         st.warning("Digite um texto antes de analisar.", icon="⚠️")
     else:
-        # Chama inferência
+        
         result = predict_proba(texto)
 
         scores = result["scores"]
         label_top = result["label_top"]
         score_top = float(result["score_top"])
 
-        # UI dos cards
+        
         st.markdown("<div class='cards' role='list' aria-label='Probabilidades por classe'>", unsafe_allow_html=True)
         for emj in EMOJIS:
             prob = scores.get(emj, 0.0)
