@@ -64,6 +64,7 @@ O script de treino unifica, limpa e salva uma versão consolidada em
 data/processed/treino_clean.parquet.
 
 4. Como rodar o projeto
+
 4.1. Clonar o repositório
 
 Copiar código
