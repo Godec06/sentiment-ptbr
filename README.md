@@ -70,13 +70,18 @@ data/processed/treino_clean.parquet.
 
 4. Como rodar o projeto
 4.1. Clonar o repositório
-bash
+
 Copiar código
+
+```
 git clone https://github.com/Godec06/sentiment-ptbr.git
 cd sentiment-ptbr
+```
+
 4.2. Criar ambiente virtual (opcional, mas recomendado)
-bash
+
 Copiar código
+```
 python -m venv .venv
 
 # Windows
@@ -84,51 +89,54 @@ python -m venv .venv
 
 # Linux / Mac
 source .venv/bin/activate
+```
+
 4.3. Instalar dependências
-bash
+
 Copiar código
+```
 pip install -r requirements.txt
+```
+
 5. Treinar o modelo
 Coloque seus arquivos de dados em:
 
 data/raw/treino.xlsx
-
 data/external/dataset_sentimentos_pt_200k.xlsx
 
 Depois rode:
 
-bash
 Copiar código
+```
 python train.py --epochs 20 --batch-size 4096 --shuffle
+```
 O script vai:
 
 carregar os datasets;
 
 limpar e unificar os textos;
-
 salvar data/processed/treino_clean.parquet;
-
 treinar um modelo clássico (usando scikit-learn);
-
 salvar o vetorizador e o modelo em:
-
 models/classic/vectorizer.pkl
-
 models/classic/model.pkl.
 
 6. Fazer predições
 Depois de treinar, você pode testar o modelo de duas formas.
 
 6.1. Usando inference.py direto
-bash
+
 Copiar código
+```
 python inference.py
+```
 O script vem com alguns exemplos de frase e imprime as probabilidades
 para cada emoção no terminal.
 
 6.2. Usando as funções de Python
-bash
+
 Copiar código
+```
 python - << "EOF"
 from inference import predict_proba
 
@@ -136,15 +144,20 @@ texto = "Eu te adoro, você é incrível! ❤️"
 probs = predict_proba(texto)
 print(probs)
 EOF
+```
 A função retorna um dicionário com as probabilidades para cada classe.
 
 7. Interface web (Streamlit)
 Para abrir a interface gráfica:
 
-bash
+
 Copiar código
+```
 streamlit run app.py
+```
+
 A interface permite:
+
 
 digitar frases em PT-BR;
 
