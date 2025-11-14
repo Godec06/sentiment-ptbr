@@ -167,4 +167,5 @@ Algumas ideias de evolução do projeto:
 
 Autor:
 Pedro Godec
+
 Análise de Dados, BI & IA • Integrações com n8n & CRMs
