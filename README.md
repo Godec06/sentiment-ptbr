@@ -171,14 +171,11 @@ inspecionar a saída em formato JSON.
 Algumas ideias de evolução do projeto:
 
 ampliar e balancear ainda mais o dataset de treinamento;
-
 testar modelos baseados em embeddings / deep learning;
-
 adicionar métricas detalhadas (F1 por classe, matriz de confusão, etc.);
-
 publicar a interface em um serviço online (ex.: Streamlit Cloud).
 
-9. Autor
+Autor:
 Pedro Godec
 Análise de Dados, BI & IA • Integrações com n8n & CRMs
 LinkedIn
