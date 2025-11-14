@@ -1,4 +1,3 @@
-# project/train.py
 """
 Treino de classificador de sentimentos (PT-BR) em 4 classes/emoji:
 🙂 (feliz), 😕 (confuso), 😡 (bravo), 😢 (triste)
@@ -31,9 +30,7 @@ from sklearn.linear_model import SGDClassifier
 from sklearn.metrics import classification_report, confusion_matrix, f1_score
 from sklearn.model_selection import train_test_split
 
-# ------------------------------------------------------------
-# Caminhos e constantes
-# ------------------------------------------------------------
+
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -48,10 +45,6 @@ ALLOWED_LABELS = ["🙂", "😕", "😡", "😢"]
 VECTORIZER_PATH = BASE_DIR / "models" / "classic" / "vectorizer.pkl"
 MODEL_PATH = BASE_DIR / "models" / "classic" / "model.pkl"
 
-
-# ------------------------------------------------------------
-# Utilitários
-# ------------------------------------------------------------
 
 def ensure_dirs() -> None:
     (BASE_DIR / "data" / "raw").mkdir(parents=True, exist_ok=True)
@@ -107,10 +100,6 @@ def preprocess(df: pd.DataFrame) -> pd.DataFrame:
     )
     return df
 
-
-# ------------------------------------------------------------
-# Carregamento das bases
-# ------------------------------------------------------------
 
 def _load_user_train(keep_duplicates: bool) -> pd.DataFrame:
     if not USER_TRAIN_PATH.exists():
@@ -190,10 +179,6 @@ def load_training_data(keep_duplicates: bool) -> pd.DataFrame:
     return df_all
 
 
-# ------------------------------------------------------------
-# Avaliação
-# ------------------------------------------------------------
-
 def evaluate_model(vectorizer: TfidfVectorizer, clf: SGDClassifier,
                    X_val_texts: List[str], y_val: List[str]) -> None:
     X_val = vectorizer.transform(X_val_texts)
@@ -206,10 +191,6 @@ def evaluate_model(vectorizer: TfidfVectorizer, clf: SGDClassifier,
     print("[VAL] Matriz de confusão:")
     print(confusion_matrix(y_val, y_pred, labels=ALLOWED_LABELS))
 
-
-# ------------------------------------------------------------
-# Treino
-# ------------------------------------------------------------
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -261,7 +242,7 @@ def main() -> None:
     X_train = vectorizer.fit_transform(X_train_texts)
     X_val = vectorizer.transform(X_val_texts)
 
-    # Classificador incremental
+    
     clf = SGDClassifier(
         loss="log_loss",
         penalty="l2",
