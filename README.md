@@ -44,9 +44,10 @@ Este repositório contém:
     └── classic/
         ├── vectorizer.pkl         # vetorizador treinado (TF-IDF, etc.)
         └── model.pkl              # modelo de classificação treinado
-        └── model.pkl              # modelo de classificação treinado
-Os arquivos grandes de dados (.xlsx, .parquet) e os modelos (.pkl)
-não são enviados para o GitHub – eles são gerados localmente.
+```
+
+## 3. Dataset
+
 
 3. Dataset
 Os dados são montados a partir de frases em português associadas a emojis.
