@@ -1,4 +1,3 @@
-# project/inference.py
 """
 Inferência para análise de sentimentos (4 emojis).
 Exponibiliza a função predict_proba(text: str) -> dict no formato:
@@ -62,24 +61,22 @@ def predict_proba(text: str) -> Dict:
 
     t0 = time.perf_counter()
 
-    # Detecção leve de idioma
+    
     if not _likely_pt_br(text):
         print("[AVISO] Texto possivelmente não está em PT-BR. Prosseguindo mesmo assim.")
 
     X = _VECTOR.transform([text])
-    proba = _MODEL.predict_proba(X)[0]  # array de probs na ordem de classes do modelo
+    proba = _MODEL.predict_proba(X)[0]  
 
-    # Mapear para ALLOWED_LABELS na mesma ordem em que o modelo foi treinado.
-    # LogisticRegression.classes_ mantém a ordem das classes vistas no treino.
+    
+    
     ordered_labels = list(_MODEL.classes_)
-    # Converter para dict com as 4 chaves-emoji exatas
+    
     scores = {lbl: float(proba[i]) for i, lbl in enumerate(ordered_labels)}
 
-    # Garantir que todas as 4 chaves existam (em tese já existem)
     for emj in ALLOWED_LABELS:
         scores.setdefault(emj, 0.0)
 
-    # Top-1
     label_top = max(scores.items(), key=lambda kv: kv[1])[0]
     score_top = scores[label_top]
 
@@ -94,6 +91,6 @@ def predict_proba(text: str) -> Dict:
 
 
 if __name__ == "__main__":
-    # Teste rápido
+    
     example = "Estou muito feliz com o resultado! 🎉"
     print(predict_proba(example))
