@@ -178,4 +178,3 @@ publicar a interface em um serviço online (ex.: Streamlit Cloud).
 Autor:
 Pedro Godec
 Análise de Dados, BI & IA • Integrações com n8n & CRMs
-LinkedIn
